@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::controller(UsuarioController::class)->group( function () {
+    Route::get('/registrar', 'create')->name('usuarios.create');
+    Route::post('/registrar', 'store')->name('usuarios.store');
+});
+Route::resource('usuarios', UsuarioController::class)->except([
+    'create',
+    'store',
+]);
+
+Route::get('/entrar', function () {
+    return view('autenticacion.entrar');
+})->name('autenticacion.entrar');

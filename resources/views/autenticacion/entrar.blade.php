@@ -19,5 +19,5 @@
     <a href="#!">Recuperar contrase&ntilde;a</a>
 </p>
 <hr>
-<p>¿Aún no usas nuestra aplicación? <a href="#!">Registrate aqui</a></p>
+<p>¿Aún no usas nuestra aplicación? <a href="{{ route('usuarios.create') }}">Registrate aqui</a></p>
 @endsection
