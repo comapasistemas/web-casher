@@ -14,9 +14,9 @@ class UsuarioRequest extends FormRequest
     public function rules()
     {
         return [
-            // Contrato
-            'cuenta' => ['required','numeric','digits:6','exists:padron,cuenta','unique:cuentas,cuenta'],
-            'nombre_recibo' => ['required','regex:/[A-Z]/','exists:padron,nombre,cuenta,' . $this->cuenta],
+            // Identifiacion
+            'cuenta' => ['bail','required','numeric','digits:6','unique:cuentas,cuenta'/*,'exists:padron,cuenta'*/],
+            'nombre_recibo' => ['bail','required','regex:/[A-Z]/','exists:padron,nombre,cuenta,' . $this->cuenta],
 
             // Informacion
             'nombres' => ['required','regex:/[a-zA-Z\s]/'],
@@ -24,9 +24,9 @@ class UsuarioRequest extends FormRequest
             'apellidomaterno' => ['required','regex:/[a-zA-Z\s]/'],
 
             // Acceso
-            'email' => ['required','email:dns','unique:usuarios,email'],
-            'usuario' => ['required','alpha_num','between:6,10','unique:usuarios,usuario'],
-            'password' => ['required','between:6,10','confirmed'],
+            'email' => ['bail','required','email:dns','unique:usuarios,email'],
+            'usuario' => ['bail','required','alpha_num','between:6,12','unique:usuarios,usuario'],
+            'password' => ['required','between:6,12','confirmed'],
             'acepto_terminos_condiciones' => ['required','accepted'],
         ];
     }
@@ -34,12 +34,12 @@ class UsuarioRequest extends FormRequest
     public function messages()
     {
         return [
-            // Contrato
+            // Identificacion
             'cuenta.required' => __('Escribe el número de cuenta'),
             'cuenta.numeric' => __('Escribe un número de cuenta válido'),
             'cuenta.digits' => __('El número de cuenta debe ser de 6 dígitos'),
-            'cuenta.exists' => __('El número de cuenta no existe en el sistema de contratos'),
             'cuenta.unique' => __('El número de cuenta ha sido registrado anteriormente'),
+            #'cuenta.exists' => __('El número de cuenta no existe en el sistema de identificaion'),
             'nombre_recibo.required' => __('Escribe el nombre completo del recibo'),
             'nombre_recibo.regex' => __('Escribe un nombre completo válido del recibo'),
             'nombre_recibo.exists' => __('El número de cuenta y el nombre del recibo no coinciden'),
@@ -61,8 +61,8 @@ class UsuarioRequest extends FormRequest
             'usuario.between' => __('El usuario debe tener entre 6 a 10 caractéres'),
             'usuario.unique' => __('Escribe otro nombre de usuario diferente'),
             'password.required' => __('Escribe la contraseña de usuario'),
-            'password.between' => __('La contraseña debe tener entre 6 a 10 caractéres'),
-            'password.confirmed' => __('Escribe la misma contraseña para confirmar'),
+            'password.between' => __('La contrase&ntilde;a debe tener entre 6 a 10 caractéres'),
+            'password.confirmed' => __('Escribe la confirmación de la contrase&ntilde;a'),
 
             'acepto_terminos_condiciones.required' => __('Aceptar los términos y condiciones de la aplicación'),
             'acepto_terminos_condiciones.accepted' => __('Aceptar los términos y condiciones de la aplicación'),
@@ -71,21 +71,13 @@ class UsuarioRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $purify = function ($text) {
-            return utf8_encode( trim($text) );
-        };
-
-        $capitalize = function ($text) {
-            return ucwords( strtolower($text) );
-        };
-
         $this->merge([
             'cuenta' => $this->numero_cuenta,
-            'nombre_recibo' => $purify($this->nombre_recibo),
+            'nombre_recibo' => strtoupper( cleanEncode($this->nombre_recibo) ),
 
-            'nombres' => $capitalize( $purify($this->nombres) ),
-            'apellidopaterno' => $capitalize( $purify($this->apellido_paterno) ),
-            'apellidomaterno' => $capitalize( $purify($this->apellido_materno) ),
+            'nombres' => capitalizeText( cleanEncode($this->nombres) ),
+            'apellidopaterno' => capitalizeText( cleanEncode($this->apellido_paterno) ),
+            'apellidomaterno' => capitalizeText( cleanEncode($this->apellido_materno) ),
  
             'email' => strtolower($this->correo_electronico),
             'password' => $this->contrasena,
