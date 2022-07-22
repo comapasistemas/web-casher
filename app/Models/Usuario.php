@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
 class Usuario extends Model
@@ -20,10 +21,16 @@ class Usuario extends Model
         'email',
         'usuario',
         'password',
+        'kontrazena',
         'acepto_terminos_condiciones',
         'actualizado',
         'aprobado',
     ];
+
+    public function setKontrazenaAttribute($value)
+    {
+        $this->attributes['kontrazena'] = Hash::make($value);
+    }
 
     public function getNombreCompletoAttribute()
     {
