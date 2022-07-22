@@ -14,7 +14,7 @@ class UsuarioRequest extends FormRequest
     public function rules()
     {
         return [
-            // Identifiacion
+            // Identificacion
             'cuenta' => ['bail','required','numeric','digits:6','unique:cuentas,cuenta'/*,'exists:padron,cuenta'*/],
             'nombre_recibo' => ['bail','required','regex:/[A-Z]/','exists:padron,nombre,cuenta,' . $this->cuenta],
 
@@ -73,11 +73,11 @@ class UsuarioRequest extends FormRequest
     {
         $this->merge([
             'cuenta' => $this->numero_cuenta,
-            'nombre_recibo' => strtoupper( cleanEncode($this->nombre_recibo) ),
+            'nombre_recibo' => strtoupper( trim($this->nombre_recibo) ),
 
-            'nombres' => capitalizeText( cleanEncode($this->nombres) ),
-            'apellidopaterno' => capitalizeText( cleanEncode($this->apellido_paterno) ),
-            'apellidomaterno' => capitalizeText( cleanEncode($this->apellido_materno) ),
+            'nombres' => capitalizeText( trim($this->nombres) ),
+            'apellidopaterno' => capitalizeText( trim($this->apellido_paterno) ),
+            'apellidomaterno' => capitalizeText( trim($this->apellido_materno) ),
  
             'email' => strtolower($this->correo_electronico),
             'password' => $this->contrasena,
