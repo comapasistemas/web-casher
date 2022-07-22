@@ -2,11 +2,11 @@
 
 // TEXT
 
-if(! function_exists('cleanEncode') )
+if(! function_exists('translateUTF8') )
 {
-    function cleanEncode(string $text)
+    function translateUTF8(string $text)
     {
-        return utf8_encode( trim($text) );
+        return utf8_decode( utf8_encode($text) );
     }
 }
 
