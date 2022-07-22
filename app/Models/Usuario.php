@@ -19,5 +19,8 @@ class Usuario extends Model
         'email',
         'usuario',
         'password',
+        'acepto_terminos_condiciones',
+        'actualizado',
+        'aprobado',
     ];
 }
