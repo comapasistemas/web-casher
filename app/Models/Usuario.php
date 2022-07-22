@@ -23,4 +23,15 @@ class Usuario extends Model
         'actualizado',
         'aprobado',
     ];
+
+    public function getNombreCompletoAttribute()
+    {
+        $data = [
+            $this->nombres,
+            $this->apellidopaterno,
+            $this->apellidomaterno,
+        ];
+
+        return implode(' ', $data);
+    }
 }
