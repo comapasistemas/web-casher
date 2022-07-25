@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
+            $table->string('password', 32);
             $table->string('secretword', 72);
             $table->boolean('acepto_terminos_condiciones')->default(1);
             $table->boolean('actualizado')->default(1);
