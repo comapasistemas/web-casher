@@ -45,12 +45,12 @@ class Usuario extends Model
 
     public static function allWithDecodedPassword()
     {
-        return self::selectRaw('*, DECODE(password, ?) as decoded', [self::$salt]);
+        return self::selectRaw('*, DECODE(password, ?) as decoded', [config('salts.usuario')]);
     }
 
     public static function createWithEncodedPassword(array $validated)
     {    
-        $salt = self::$salt;
+        $salt = config('salts.usuario');
 
         $usuario_id = self::insertGetId([
             'nombres' => $validated['nombres'],
@@ -68,6 +68,6 @@ class Usuario extends Model
 
     private static function encodePasswordByMySQL(string $password)
     {
-        return DB::select(DB::raw("SELECT ENCODE(?, ?) as encoded"), [$password, self::$salt]);
+        return DB::select(DB::raw("SELECT ENCODE(?, ?) as encoded"), [$password, config('salts.usuario')]);
     }
 }
