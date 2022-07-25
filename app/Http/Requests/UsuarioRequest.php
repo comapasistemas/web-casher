@@ -64,7 +64,7 @@ class UsuarioRequest extends FormRequest
             'password.string' => __('Escribe el password válido'),
             'secretword.required' => __('Escribe la contraseña de usuario'),
             'secretword.min' => __('La contraseña debe tener mínimo de 6 caractéres'),
-            'secretword.confirmed' => __('Escribe la confirmación de la contraseña'),
+            'secretword.confirmed' => __('Verifica la confirmación de la contraseña'),
 
             'acepto_terminos_condiciones.required' => __('Aceptar los términos y condiciones de la aplicación'),
             'acepto_terminos_condiciones.accepted' => __('Aceptar los términos y condiciones de la aplicación'),

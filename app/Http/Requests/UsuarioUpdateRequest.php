@@ -47,7 +47,7 @@ class UsuarioUpdateRequest extends FormRequest
             'usuario.unique' => __('Escribe otro nombre de usuario diferente'),
             'secretword.required' => __('Escribe la contraseña de usuario'),
             'secretword.min' => __('La contraseña debe tener mínimo de 6 caractéres'),
-            'secretword.confirmed' => __('Escribe la confirmación de la contraseña'),
+            'secretword.confirmed' => __('Verifica la confirmación de la contraseña'),
         ];
     }
 
