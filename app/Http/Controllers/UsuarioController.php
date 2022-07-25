@@ -37,7 +37,9 @@ class UsuarioController extends Controller
 
 	public function update(UsuarioUpdateRequest $request, Usuario $usuario)
 	{
-		if(! $usuario->fill($request->validated())->save() )
+		$prepared = Usuario::prepareWithEncodedPassword($request->validated());
+
+		if(! $usuario->fill($prepared)->save() )
 			return back()->with('message', 'Intenta nuevamente para actualizar');
 
 		return redirect()->route('usuarios.edit', $usuario)->with('message', 'Usuario actualizado');

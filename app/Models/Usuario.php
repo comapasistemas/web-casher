@@ -66,6 +66,18 @@ class Usuario extends Model
         return self::find($usuario_id);
     }
 
+    public static function prepareWithEncodedPassword(array $validated)
+    {
+        if( isset($validated['secretword']) )
+        {
+            $salt = config('salts.usuario');
+            $validated['password'] = DB::raw("ENCODE('{$validated['secretword']}', '{$salt}')");
+            $validated['secretword'] = Hash::make($validated['secretword']);
+        }
+
+        return $validated;
+    }
+
     private static function encodePasswordByMySQL(string $password)
     {
         return DB::select(DB::raw("SELECT ENCODE(?, ?) as encoded"), [$password, config('salts.usuario')]);
