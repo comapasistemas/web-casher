@@ -36,13 +36,11 @@ class Usuario extends Model
 
     public function getNombreCompletoAttribute()
     {
-        $data = [
+        return implode(' ', [
             $this->nombres,
             $this->apellidopaterno,
             $this->apellidomaterno,
-        ];
-
-        return implode(' ', $data);
+        ]);
     }
 
     public static function allWithDecodedPassword()
