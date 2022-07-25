@@ -15,7 +15,11 @@ return new class extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('secretword', 72);
+            $table->boolean('acepto_terminos_condiciones')->default(1);
+            $table->boolean('actualizado')->default(1);
+            $table->boolean('activado')->default(1);
+            $table->timestamps(); // DATETIME = CURRENT_TIMESTAMP
         });
 		
 		/**
