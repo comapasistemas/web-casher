@@ -1,8 +1,5 @@
 @extends('app')
 @section('content')
-<p>
-    <a href="{{ route('autenticacion.entrar') }}">Entrar</a>
-</p>
 <h1>IMPORTANTE</h1>
 <h2>La informacion debe corresponder exactamante como aparece en tu recibo de Comapa</h2>
 <form action="{{ route('usuarios.store') }}" method="post" autocomplete="off">
@@ -64,5 +61,6 @@
     <br>
     @csrf
     <button type="submit">Registrame</button>
+    <a href="{{ route('autenticacion.entrar') }}">Entrar a la aplicación</a>
 </form>
 @endsection

@@ -4,7 +4,7 @@
 <form action="#!" method="post">
     <div>
         <label for="inputUsuario">Usuario</label>
-        <input type="text" name="usuario" id="inputUsuario" required>
+        <input type="text" name="usuario" id="inputUsuario" value="{{ request('usuario','') }}" required>
     </div>
     <div>
         <label for="inputContrasena">Contrase&ntilde;a</label>

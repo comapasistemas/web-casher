@@ -22,9 +22,9 @@ class UsuarioController extends Controller
 
 	public function store(UsuarioRequest $request)
 	{
-		if(! $usuario = Usuario::create($request->validated()))
+		if(! $usuario = Usuario::create($request->validated()) )
 			return back()->with('message', 'Intenta registrarte nuevamente');
 
-		return redirect()->route('autenticacion.entrar')->with('message', 'Usuario registrado');
+		return redirect()->route('autenticacion.entrar', ['usuario' => $usuario->usuario])->with('message', 'Registrado con éxito');
 	}
 }
