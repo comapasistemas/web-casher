@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\DB;
 class Usuario extends Model
 {
     use HasFactory;
-	
+
 	protected $table = 'usuarios';
+	
+    private static $salt = 'hackcomapa';
 
     protected $fillable = [
         'nombres',
@@ -27,8 +29,8 @@ class Usuario extends Model
         'aprobado',
     ];
 
-    protected $guard = [
-        #'password'
+    protected $guarded = [
+        // 'password'
     ];
 
     public function setSecretwordAttribute($value)
@@ -47,13 +49,13 @@ class Usuario extends Model
         return implode(' ', $data);
     }
 
-    private static function encodePasswordByMySQL(string $value)
+    public function scopeAllWithDecoded($query)
     {
-        return DB::select( DB::raw("SELECT ENCODE({$value}, 'hackcomapa') as encoded") );
+        return self::selectRaw('*, DECODE(password, ?) as decoded', [self::$salt]);
     }
 
-    private static function decodePasswordByMySQL(int $id)
+    private static function encodePasswordByMySQL(string $password)
     {
-        return DB::select( DB::raw("SELECT DECODE(password, 'hackcomapa') as decoded from usuarios where id = {$id}") );
+        return DB::select(DB::raw("SELECT ENCODE(?, ?) as encoded"), [$password, self::$salt]);
     }
 }

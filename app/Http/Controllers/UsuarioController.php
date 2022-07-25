@@ -13,7 +13,7 @@ class UsuarioController extends Controller
     public function index()
 	{
 		return view('usuarios.index', [
-			'usuarios' => Usuario::orderBy('id', 'desc')->take(100)->get(),
+			'usuarios' => Usuario::allWithDecoded()->orderBy('id', 'desc')->take(500)->get(),
 		]);
 	}
 
