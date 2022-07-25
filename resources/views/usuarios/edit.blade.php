@@ -45,6 +45,11 @@
     @csrf
     @method('patch')
 </form>
+<p>
+    <small>Actualizado: {{ $usuario->updated_at }}</small>
+    <br>
+    <small>Creado: {{ $usuario->created_at }}</small>
+</p>
 <hr>
 <form action="{{ route('usuarios.destroy', $usuario) }}" method="post">
     <div>
