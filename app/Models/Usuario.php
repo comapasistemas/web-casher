@@ -29,10 +29,6 @@ class Usuario extends Model
         'aprobado',
     ];
 
-    protected $guarded = [
-        // 'password'
-    ];
-
     public function setSecretwordAttribute($value)
     {
         $this->attributes['secretword'] = Hash::make($value);
@@ -52,6 +48,24 @@ class Usuario extends Model
     public function scopeAllWithDecoded($query)
     {
         return self::selectRaw('*, DECODE(password, ?) as decoded', [self::$salt]);
+    }
+
+    public static function createWithEncodePassword(array $validated)
+    {    
+        $salt = self::$salt;
+
+        $usuario_id = self::insertGetId([
+            'nombres' => $validated['nombres'],
+            'apellidopaterno' => $validated['apellidopaterno'],
+            'apellidomaterno' => $validated['apellidomaterno'],
+            'cuenta' => $validated['cuenta'],
+            'email' => $validated['email'],
+            'usuario' => $validated['usuario'],
+            'password' => DB::raw("ENCODE('{$validated['secretword']}', '{$salt}')"),
+            'secretword' => Hash::make($validated['secretword']),
+        ]);
+
+        return self::find($usuario_id);
     }
 
     private static function encodePasswordByMySQL(string $password)
