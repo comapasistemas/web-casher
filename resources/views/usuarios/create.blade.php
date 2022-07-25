@@ -19,17 +19,17 @@
     <div>
         <label for="inputNombres">Nombre(s)</label>
         <input type="text" name="nombres" id="inputNombres" value="{{ old('nombres') }}" pattern="[a-zA-Z\s]+" required>
-        <small>Revisa tu recibo de pago</small>
+        <small></small>
     </div>
     <div>
         <label for="inputApellidoPaterno">Apellido paterno</label>
         <input type="text" name="apellido_paterno" id="inputApellidoPaterno" value="{{ old('apellido_paterno') }}" pattern="[a-zA-Z\s]+" required>
-        <small>Revisa tu recibo de pago</small>
+        <small></small>
     </div>
     <div>
         <label for="inputApellidoMaterno">Apellido materno</label>
         <input type="text" name="apellido_materno" id="inputApellidoMaterno" value="{{ old('apellido_materno') }}" pattern="[a-zA-Z\s]+" required>
-        <small>Revisa tu recibo de pago</small>
+        <small></small>
     </div>
 
     <h3>Acceso</h3>
@@ -59,8 +59,8 @@
         <label for="checkboxAceptoTerminosCondiciones">He leído y acepto los <a href="#!" target="_blank">términos y condiciones</a> para el uso de la aplicación establecidos por Comapa.</label>
     </div>
     <br>
-    @csrf
     <button type="submit">Registrame</button>
     <a href="{{ route('autenticacion.entrar') }}">Entrar a la aplicación</a>
+    @csrf
 </form>
 @endsection
