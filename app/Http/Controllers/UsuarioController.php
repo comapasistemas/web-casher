@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UsuarioRequest;
+use App\Http\Requests\UsuarioUpdateRequest;
+use App\Http\Requests\UsuarioDeleteRequest;
 use App\Models\Usuario;
 
 class UsuarioController extends Controller
@@ -26,5 +28,26 @@ class UsuarioController extends Controller
 			return back()->with('message', 'Intenta registrarte nuevamente');
 
 		return redirect()->route('autenticacion.entrar', ['usuario' => $usuario->usuario])->with('message', 'Registrado con éxito');
+	}
+
+	public function edit(Usuario $usuario)
+	{
+		return view('usuarios.edit')->with('usuario', $usuario);
+	}
+
+	public function update(UsuarioUpdateRequest $request, Usuario $usuario)
+	{
+		if(! $usuario->fill($request->validated())->save() )
+			return back()->with('message', 'Intenta nuevamente para actualizar');
+
+		return redirect()->route('usuarios.edit', $usuario)->with('message', 'Usuario actualizado');
+	}
+
+	public function destroy(UsuarioDeleteRequest $request, Usuario $usuario)
+	{
+		if(! $usuario->delete() )
+			return back()->with('message', "Error al eliminar usuario {$usuario->usuario}");
+
+		return redirect()->route('usuarios.index')->with('message', "Usuario {$usuario->usuario} eliminado");
 	}
 }
