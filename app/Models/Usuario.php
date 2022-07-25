@@ -21,15 +21,19 @@ class Usuario extends Model
         'email',
         'usuario',
         'password',
-        'kontrazena',
+        'secretword',
         'acepto_terminos_condiciones',
         'actualizado',
         'aprobado',
     ];
 
-    public function setKontrazenaAttribute($value)
+    protected $guard = [
+        #'password'
+    ];
+
+    public function setSecretwordAttribute($value)
     {
-        $this->attributes['kontrazena'] = Hash::make($value);
+        $this->attributes['secretword'] = Hash::make($value);
     }
 
     public function getNombreCompletoAttribute()

@@ -49,12 +49,12 @@
     <div>
         <label for="inputContrasena">Contrase&ntilde;a</label>
         <input type="password" name="contrasena" id="inputContrasena" required>
-        <small>De 6 a 12 caractéres</small>
+        <small>Mínimo 6 caractéres</small>
     </div>
     <div>
         <label for="inputConfirmarContrasena">Confirmar contrase&ntilde;a</label>
         <input type="password" name="confirmar_contrasena" id="inputConfirmarContrasena" required>
-        <small>De 6 a 12 caractéres</small>
+        <small></small>
     </div>
     <br>
     <div>

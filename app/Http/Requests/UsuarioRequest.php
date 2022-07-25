@@ -26,8 +26,8 @@ class UsuarioRequest extends FormRequest
             // Acceso
             'email' => ['bail','required','email:dns','unique:usuarios,email'],
             'usuario' => ['bail','required','alpha_num','between:6,12','unique:usuarios,usuario'],
-            'kontrazena' => ['required','between:6,12','confirmed'],
             'password' => ['string'],
+            'secretword' => ['required','min:6','confirmed'],
             'acepto_terminos_condiciones' => ['required','accepted'],
         ];
     }
@@ -61,9 +61,10 @@ class UsuarioRequest extends FormRequest
             'usuario.alpha_num' => __('El usuario debe contener solo letras y números'),
             'usuario.between' => __('El usuario debe tener entre 6 a 12 caractéres'),
             'usuario.unique' => __('Escribe otro nombre de usuario diferente'),
-            'kontrazena.required' => __('Escribe la contraseña de usuario'),
-            'kontrazena.between' => __('La contraseña debe tener entre 6 a 12 caractéres'),
-            'kontrazena.confirmed' => __('Escribe la confirmación de la contraseña'),
+            'password.string' => __('Escribe el password válido'),
+            'secretword.required' => __('Escribe la contraseña de usuario'),
+            'secretword.min' => __('La contraseña debe tener mínimo de 6 caractéres'),
+            'secretword.confirmed' => __('Escribe la confirmación de la contraseña'),
 
             'acepto_terminos_condiciones.required' => __('Aceptar los términos y condiciones de la aplicación'),
             'acepto_terminos_condiciones.accepted' => __('Aceptar los términos y condiciones de la aplicación'),
@@ -81,9 +82,9 @@ class UsuarioRequest extends FormRequest
             'apellidomaterno' => capitalizeText( trim($this->apellido_materno) ),
  
             'email' => strtolower($this->correo_electronico),
-            'kontrazena' => $this->contrasena,
-            'kontrazena_confirmation' => $this->confirmar_contrasena,
             'password' => $this->contrasena,
+            'secretword' => $this->contrasena,
+            'secretword_confirmation' => $this->confirmar_contrasena,
         ]);
     }
 }
