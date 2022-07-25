@@ -45,12 +45,12 @@ class Usuario extends Model
         return implode(' ', $data);
     }
 
-    public function scopeAllWithDecoded($query)
+    public static function allWithDecodedPassword()
     {
         return self::selectRaw('*, DECODE(password, ?) as decoded', [self::$salt]);
     }
 
-    public static function createWithEncodePassword(array $validated)
+    public static function createWithEncodedPassword(array $validated)
     {    
         $salt = self::$salt;
 

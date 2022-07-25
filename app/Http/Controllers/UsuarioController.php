@@ -13,7 +13,7 @@ class UsuarioController extends Controller
     public function index()
 	{
 		return view('usuarios.index', [
-			'usuarios' => Usuario::allWithDecoded()->orderBy('id', 'desc')->take(500)->get(),
+			'usuarios' => Usuario::allWithDecodedPassword()->orderByDesc('id')->take(500)->get(),
 		]);
 	}
 
@@ -24,7 +24,7 @@ class UsuarioController extends Controller
 
 	public function store(UsuarioRequest $request)
 	{
-		if(! $usuario = Usuario::createWithEncodePassword($request->validated()) )
+		if(! $usuario = Usuario::createWithEncodedPassword($request->validated()) )
 			return back()->with('message', 'Intenta registrarte nuevamente');
 
 		return redirect()->route('autenticacion.entrar', ['usuario' => $usuario->usuario])->with('message', 'Registro de usuario con éxito');
