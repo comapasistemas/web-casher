@@ -20,7 +20,7 @@ class UsuarioUpdateRequest extends FormRequest
             'apellidomaterno' => ['required','regex:/[a-zA-Z\s]/'],
 
             // Acceso
-            'email' => ['bail','required','email:dns','unique:usuarios,email,' . $this->usuario_id],
+            'email' => ['bail','required','email:filter','unique:usuarios,email,' . $this->usuario_id],
             'usuario' => ['bail','required','alpha_num','between:6,12','unique:usuarios,usuario,' . $this->usuario_id],
             'secretword' => ['sometimes','nullable','min:6','confirmed'],
         ];

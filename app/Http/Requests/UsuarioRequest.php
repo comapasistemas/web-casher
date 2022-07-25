@@ -24,7 +24,7 @@ class UsuarioRequest extends FormRequest
             'apellidomaterno' => ['required','regex:/[a-zA-Z\s]/'],
 
             // Acceso
-            'email' => ['bail','required','email:dns','unique:usuarios,email'],
+            'email' => ['bail','required','email:filter','unique:usuarios,email'],
             'usuario' => ['bail','required','alpha_num','between:6,12','unique:usuarios,usuario'],
             'password' => ['string'],
             'secretword' => ['required','min:6','confirmed'],
