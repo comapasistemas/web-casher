@@ -13,8 +13,6 @@ class Usuario extends Model
 
 	protected $table = 'usuarios';
 	
-    private static $salt = 'hackcomapa';
-
     protected $fillable = [
         'nombres',
         'apellidopaterno',
