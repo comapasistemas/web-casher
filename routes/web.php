@@ -31,4 +31,5 @@ Route::resource('usuarios', UsuarioController::class)->except([
 
 Route::controller(AutenticacionController::class)->group(function () {
     Route::get('/entrar', 'login')->name('autenticacion.entrar');
+    Route::get('/terminos_condiciones', 'terminos_condiciones')->name('autenticacion.terminos_condiciones');
 });

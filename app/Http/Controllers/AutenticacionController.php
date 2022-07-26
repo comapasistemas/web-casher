@@ -13,4 +13,9 @@ class AutenticacionController extends Controller
             'usuario' => $request->filled('usuario') ? $request->usuario : '',
         ]);
     }
+
+    public function terminos_condiciones()
+    {
+        return view('autenticacion.terminos_condiciones');
+    }
 }

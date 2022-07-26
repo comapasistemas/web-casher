@@ -56,11 +56,11 @@
     <br>
     <div>
         <input type="checkbox" name="acepto_terminos_condiciones" value="1" id="checkboxAceptoTerminosCondiciones" required>
-        <label for="checkboxAceptoTerminosCondiciones">He leído y acepto los <a href="#!" target="_blank">términos y condiciones</a> para el uso de la aplicación establecidos por Comapa.</label>
+        <label for="checkboxAceptoTerminosCondiciones">He leído y acepto los <a href="{{ route('autenticacion.terminos_condiciones') }}" target="_blank">términos y condiciones</a> para el uso de la aplicación establecidos por Comapa.</label>
     </div>
     <br>
     <button type="submit">Registrame</button>
-    <a href="{{ route('autenticacion.entrar') }}">Entrar a la aplicación</a>
+    <a href="{{ route('autenticacion.entrar') }}">Entrar</a>
     @csrf
 </form>
 @endsection
