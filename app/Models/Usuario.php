@@ -43,6 +43,11 @@ class Usuario extends Model
         ]);
     }
 
+    public function scopeExisteActivado($query, $usuario, $columna = 'id')
+    {
+        return $query->where($columna, $usuario)->where('activado', 1)->exists();
+    }
+
     public static function allWithDecodedPassword()
     {
         return self::selectRaw('*, DECODE(password, ?) as decoded', [config('salts.usuario')]);
