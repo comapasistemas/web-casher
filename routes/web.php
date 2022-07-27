@@ -32,6 +32,6 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [EscritorioController::class, 'index'])->name('escritorio');
+    Route::get('/salir', [AutenticacionController::class, 'logout'])->name('logout');
     // Route::resource('usuarios', UsuarioController::class)->except(['create','store']);
-    // Route::get('/salir', [AutenticacionController::class, 'logout'])->name('logout');
 });

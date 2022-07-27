@@ -29,15 +29,15 @@ class AutenticacionController extends Controller
 
     public function logout(Request $request)
     {
-        return 'logout...';
-
+        // Session::flush();
+        
         Auth::logout();
  
         $request->session()->invalidate();
      
         $request->session()->regenerateToken();
      
-        return redirect('/');
+        return redirect()->route('login')->with('message', 'Sesión terminada');
     }
 
     public function terminos_condiciones()

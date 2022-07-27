@@ -8,6 +8,6 @@ class EscritorioController extends Controller
 {
     public function index()
     {
-        return 'Bienvenido usuario autenticado!! :D';
+        return view('escritorio.index');
     }
 }
