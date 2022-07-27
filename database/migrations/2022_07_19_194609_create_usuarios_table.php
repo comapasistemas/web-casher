@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('password', 48);
-            $table->string('secretword', 72);
+            $table->string('secretword', 64);
             $table->boolean('acepto_terminos_condiciones')->default(1);
             $table->boolean('actualizado')->default(1);
             $table->boolean('activado')->default(1);
+            $table->string('remember_token', 100)->nullable();
             $table->timestamps(); // DATETIME = CURRENT_TIMESTAMP
         });
 		
