@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 <h1>Bienvenido</h1>
-<form action="{{ route('autenticacion.login') }}" method="post" autocomplete="off">
+<form action="{{ route('logging') }}" method="post" autocomplete="off">
     <div>
         <label for="inputUsuario">Usuario</label>
         <input type="text" name="usuario" id="inputUsuario" value="{{ old('usuario', $usuario) }}" required>

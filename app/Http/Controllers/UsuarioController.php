@@ -27,7 +27,7 @@ class UsuarioController extends Controller
 		if(! $usuario = Usuario::createWithEncodedPassword($request->validated()) )
 			return back()->with('message', 'Intenta registrarte nuevamente');
 
-		return redirect()->route('autenticacion.entrar', ['usuario' => $usuario->usuario])->with('message', 'Registro de usuario con éxito');
+		return redirect()->route('login', ['usuario' => $usuario->usuario])->with('message', 'Registro de usuario con éxito');
 	}
 
 	public function edit(Usuario $usuario)
