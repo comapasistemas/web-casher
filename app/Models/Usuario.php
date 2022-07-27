@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
     use HasFactory;
 
@@ -39,6 +40,11 @@ class Usuario extends Model
             $this->apellidopaterno,
             $this->apellidomaterno,
         ]);
+    }
+
+    public function scopeFindWithDecoded($query, $value, $column = 'id')
+    {
+        return $query->selectRaw('*, DECODE(password, ?) as decoded', [config('salts.usuario')])->where($column, $value);
     }
 
     public function scopeExisteActivado($query, $usuario, $columna = 'id')
@@ -81,7 +87,7 @@ class Usuario extends Model
         return $validated;
     }
 
-    private static function encodePasswordByMySQL(string $password)
+    private static function getEncodedPasswordByMySQL(string $password)
     {
         return DB::select(DB::raw("SELECT ENCODE(?, ?) as encoded"), [$password, config('salts.usuario')]);
     }
