@@ -38,14 +38,14 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'usuarios', // users
         ],
 
-        // 'usuario' => [
-        //     'driver' => 'session',
-        //     'provider' => 'usuarios',
-        //     'redirectTo' => 'usuarios.home',
-        //    ],
+        'usuario' => [
+            'driver' => 'session',
+            'provider' => 'usuarios',
+            'redirectTo' => '/',
+        ],
     ],
 
     /*
@@ -66,15 +66,15 @@ return [
     */
 
     'providers' => [
+        'usuarios' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Usuario::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
-        // 'usuarios' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Models\Usuario::class,
-        // ],
 
         // 'users' => [
         //     'driver' => 'database',
