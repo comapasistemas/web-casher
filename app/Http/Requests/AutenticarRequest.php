@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AutenticacionRequest extends FormRequest
+class AutenticarRequest extends FormRequest
 {
     private $message_try_again = 'Usuario ó contrseña incorrectos';
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Autenticacion;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\AutenticacionRequest;
+use App\Http\Requests\AutenticarRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +18,7 @@ class SesionController extends Controller
         ]);
     }
 
-    public function logging(AutenticacionRequest $request)
+    public function authenticate(AutenticarRequest $request)
     {
         $usuario = Usuario::findWithDecoded($request->username, 'usuario')->first();
 

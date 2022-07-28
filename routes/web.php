@@ -33,7 +33,7 @@ Route::middleware(['web','guest'])->group(function () {
     Route::controller(SesionController::class)
         ->group(function() {
             Route::get('/', 'login')->name('login');
-            Route::post('/', 'logging')->name('logging');
+            Route::post('/', 'authenticate')->name('authenticate');
         });
 });
 
