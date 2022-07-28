@@ -20,7 +20,7 @@ class SesionController extends Controller
 
     public function authenticate(AutenticarRequest $request)
     {
-        $usuario = Usuario::findWithDecoded($request->username, 'usuario')->first();
+        $usuario = Usuario::findWithDecodedPassword($request->username, 'usuario')->first();
 
         if(! $usuario || $usuario->decoded <> $request->password)
             return back()->withInput($request->only('usuario'))->with('message', 'Usuario ó contraseña incorrectos');

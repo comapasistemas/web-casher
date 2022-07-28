@@ -42,7 +42,12 @@ class Usuario extends Authenticatable
         ]);
     }
 
-    public function scopeFindWithDecoded($query, $value, $column = 'id')
+    public function scopeAllWithDecodedPassword($query)
+    {
+        return $query->selectRaw('*, DECODE(password, ?) as decoded', [config('salts.usuario')]);
+    }
+
+    public function scopeFindWithDecodedPassword($query, $value, $column = 'id')
     {
         return $query->selectRaw('*, DECODE(password, ?) as decoded', [config('salts.usuario')])->where($column, $value);
     }
@@ -50,11 +55,6 @@ class Usuario extends Authenticatable
     public function scopeExisteActivado($query, $usuario, $columna = 'id')
     {
         return $query->where($columna, $usuario)->where('activado', 1)->exists();
-    }
-
-    public static function allWithDecodedPassword()
-    {
-        return self::selectRaw('*, DECODE(password, ?) as decoded', [config('salts.usuario')]);
     }
 
     public static function createWithEncodedPassword(array $validated)
