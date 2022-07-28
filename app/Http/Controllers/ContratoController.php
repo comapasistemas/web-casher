@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class ContratoController extends Controller
 {
-    public function clausulas()
+    public function index()
     {
         return view('contrato.index');
     }
