@@ -40,6 +40,7 @@ Route::middleware(['web','guest'])->group(function () {
 Route::middleware(['web','auth'])->group(function () {
     Route::get('/escritorio', [EscritorioController::class, 'index'])->name('escritorio.index');
     Route::delete('/', [SesionController::class, 'logout'])->name('logout');
+    
+    Route::resource('usuarios', UsuarioController::class);
 });
 
-Route::resource('usuarios', UsuarioController::class);
