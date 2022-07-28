@@ -11,13 +11,13 @@
         <input type="password" name="contrasena" id="inputContrasena" required>
     </div>
     <br>
+    <button type="submit">Iniciar sesión</button>
     @csrf
-    <button type="submit">Entrar</button>
 </form>
 <p>
     <span>¿No recuerdas la contrase&ntilde;a?</span>
     <a href="#!">Recuperar contrase&ntilde;a</a>
 </p>
 <hr>
-<p>¿Aún no usas nuestra aplicación? <a href="{{ route('usuarios.create') }}">Registrate aqui</a></p>
+<p>¿Aún no usas nuestra aplicación? <a href="{{ route('registrar.create') }}">Registrate aqui</a></p>
 @endsection
