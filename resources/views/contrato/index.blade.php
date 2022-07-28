@@ -13,7 +13,4 @@
     <li>termino y condicion</li>
 </ul>
 <p>Curabitur tempus sagittis massa, et finibus metus porta non. Sed vulputate, lacus et molestie dignissim, neque mi fringilla neque, eu aliquam dolor nulla eget nibh. Curabitur maximus sapien a libero blandit scelerisque. In sit amet tellus at metus fringilla vestibulum eu et turpis. Pellentesque sit amet vestibulum lorem. Ut elementum orci purus, et congue libero posuere quis. Duis eleifend lectus odio, at posuere enim efficitur sagittis. Praesent sit amet ullamcorper lorem, eu convallis purus. Nulla aliquet leo in justo eleifend, et efficitur augue vestibulum. Phasellus mollis, velit nec sagittis eleifend, magna quam maximus libero, vitae rhoncus justo ligula et nulla.</p>
-<p>
-    <a href="{{ route('registrar.create') }}">Entendido, quiero registrarme y usar la aplicación</a>
-</p>
 @endsection
