@@ -25,9 +25,9 @@ class UsuarioController extends Controller
 	public function store(UsuarioRequest $request)
 	{
 		if(! $usuario = Usuario::createWithEncodedPassword($request->validated()) )
-			return back()->with('message', 'Intenta registrarte nuevamente');
+			return back()->with('message', 'Intenta crear el usuario nuevamente');
 
-		return redirect()->route('login', ['usuario' => $usuario->usuario])->with('message', 'Registro de usuario con éxito');
+		return redirect()->route('usuarios.index')->with('message', 'Usuario creado');
 	}
 
 	public function edit(Usuario $usuario)
@@ -40,7 +40,7 @@ class UsuarioController extends Controller
 		$prepared = Usuario::prepareWithEncodedPassword($request->validated());
 
 		if(! $usuario->fill($prepared)->save() )
-			return back()->with('message', 'Intenta nuevamente para actualizar');
+			return back()->with('message', 'Intenta actualizar el usuario nuevamente');
 
 		return redirect()->route('usuarios.edit', $usuario)->with('message', 'Usuario actualizado');
 	}
