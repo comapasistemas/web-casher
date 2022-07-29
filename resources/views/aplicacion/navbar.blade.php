@@ -12,7 +12,7 @@
 </div>
 <div>
     <a href="{{ route('escritorio.index') }}">Escritorio</a>
-    <a href="{{ route('escritorio.index') }}">Consultas</a>
+    <a href="{{ route('consultas.index') }}">Consultas</a>
     <a href="{{ route('escritorio.index') }}">Cuentas</a>
 </div>
 <br>
