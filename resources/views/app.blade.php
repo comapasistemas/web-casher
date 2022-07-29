@@ -7,12 +7,8 @@
         <title>{{ config('app.name') }}</title>
 	</head>
 	<body>
-        <div>
-            @include('aplicacion.mensajes')
-        </div>
-        <div>
-            @include('aplicacion.errores')
-        </div>
+        @include('aplicacion.messages')
+        @include('aplicacion.errors')
         @includeWhen(auth()->check(), 'aplicacion.topbar')
 		@yield('content')
         @include('aplicacion.footer')
