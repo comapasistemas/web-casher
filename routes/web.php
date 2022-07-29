@@ -40,7 +40,8 @@ Route::middleware(['web','guest'])->group(function () {
 
 Route::middleware(['web','auth'])->group(function () {
     Route::get('escritorio', [EscritorioController::class, 'index'])->name('escritorio.index');
+    Route::get('consultas', [ConsultaController::class, 'index'])->name('consultas.index');
+
     Route::delete('/', [SesionController::class, 'logout'])->name('logout');
-    
 });
 
