@@ -14,6 +14,7 @@
             </tbody>
         </table>
     </div>
+    <hr>
     <div>
         <p>Promedio de saldos al momento</p>
         @for($i = 1; $i <= 5; $i++)
@@ -27,24 +28,18 @@
         @endfor
     </div>
 </div>
-
+<hr>
 <div>
-    <p><b>Importante</b></p>
+    <h3>Necesitas los archivos XML de tus recibos?</h3>
+    <p>Envíanos un correo electrónico a <a href="mailto:contacto@comapanuevolaredo.gob.mx">contacto@comapanuevolaredo.gob.mx</a> con la siguiente información:</p>
     <ul>
-        <li>Te recomendados instalar <a href="https://get.adobe.com/es/reader/" target="_blank">acrobat reader</a> para la visualización de tus recibos en formato <a href="https://www.adobe.com/mx/acrobat/about-adobe-pdf.html" target="_blank">PDF</a></li>
-        <li>Es necesario imprimir tus recibos en impresoras láser ó inkjet para la lectura correcta en sucursales como <a href="https://www.oxxo.com/" target="_blank">OXXO</a>.</li>
-        <li>
-            Si requieres los archivos XML, envíanos un correo electrónico a <a href="mailto:contacto@comapanuevolaredo.gob.mx">contacto@comapanuevolaredo.gob.mx</a> con la siguiente información:
-            <ul>
-                <li>Nombre completo</li>
-                <li>Correo electrónico</li>
-                <li>Número de cuenta</li>
-                <li>Meses específicos que solicita</li>
-            </ul>
-        </li>
+        <li>Nombre completo</li>
+        <li>Correo electrónico</li>
+        <li>Número de cuenta</li>
+        <li>Meses específicos que solicita</li>
     </ul>
 </div>
-
+<hr>
 <div>
     <p>
         <span>Aplicacion 2.3</span>
@@ -60,4 +55,5 @@
         @endforeach
     </ul>
 </div>
+<br>
 @endsection
