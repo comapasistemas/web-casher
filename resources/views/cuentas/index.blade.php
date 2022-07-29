@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 <div>
-    <h3>Cuentas</h3>
+    <h3>Cuentas asociadas</h3>
     <p>
         <a href="{{ route('cuentas.create') }}">Agregar cuenta</a>
     </p>

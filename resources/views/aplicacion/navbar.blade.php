@@ -13,7 +13,7 @@
 <div>
     <a href="{{ route('escritorio.index') }}">Escritorio</a>
     <a href="{{ route('consultas.index') }}">Consultas</a>
-    <a href="{{ route('cuentas.index') }}">Cuentas</a>
+    <a href="{{ route('cuentas.index') }}">Cuentas asociadas</a>
     <a href="{{ route('tarjetas.index') }}">Tarjetas</a>
 </div>
 <br>

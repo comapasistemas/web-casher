@@ -1,5 +1,6 @@
 @extends('app')
 @section('content')
+<h3>Agregar una cuenta asociada</h3>
 <form action="{{ route('cuentas.store') }}" method="post">
     <div>
         <label for="inputNumeroCuenta">Número de cuenta</label>
