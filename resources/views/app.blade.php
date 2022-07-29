@@ -13,6 +13,7 @@
         <div>
             @include('aplicacion.errores')
         </div>
+        @includeWhen(auth()->check(), 'aplicacion.topbar')
 		@yield('content')
 	</body>
 </html>
