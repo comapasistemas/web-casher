@@ -8,6 +8,15 @@ $icons_count = count($icons);
 <div>
     <form action="{{ route('consultas.index') }}" method="get">
         <div>
+            <label for="selectCuenta">Cuenta</label>
+            <select name="cuenta" id="selectCuenta">
+                <option value="todas">Todas las cuentas</option>
+                @for($i = 1; $i <= 5; $i++)
+                <option value='00000{{ $i }}'>00000{{ $i }}</option>
+                @endfor
+            </select>
+        </div>
+        <div>
             <label for="dateDesde">Desde</label>
             <input type="date" name="desde" id="dateDesde">
         </div>
@@ -53,7 +62,7 @@ $icons_count = count($icons);
     <p>Paginacion: 1 de #</p>
 </div>
 <div>
-    <h4>IMPORTANE</h4>
+    <h4>IMPORTANTE</h4>
     <ul>
         <li>Te recomendados instalar el software <a href="https://get.adobe.com/es/reader/" target="_blank">Acrobat Reader</a> para visualizar tus recibos en formato <a href="https://www.adobe.com/mx/acrobat/about-adobe-pdf.html" target="_blank">PDF</a>.</li>
         <li>Imprime tus recibos solamente en <a href="https://www.webcartucho.mx/blog/impresora-de-tinta-o-impresora-laser" target="_blank">impresoras láser ó tinta</a> para la lectura correcta del código en sucursales como <a href="https://www.oxxo.com/" target="_blank">OXXO</a>.</li>
