@@ -43,6 +43,8 @@ Route::middleware(['web','guest'])->group(function () {
 Route::middleware(['web','auth'])->group(function () {
     Route::get('escritorio', [EscritorioController::class, 'index'])->name('escritorio.index');
     Route::get('consultas', [ConsultaController::class, 'index'])->name('consultas.index');
+
+    Route::get('cuentas/{cuenta}/delete', [CuentaController::class, 'delete'])->name('cuentas.delete');
     Route::resource('cuentas', CuentaController::class)->except(['show','edit','update']);
 
     Route::get('tarjetas/{id}/delete', [TarjetaController::class, 'delete'])->name('tarjetas.delete');

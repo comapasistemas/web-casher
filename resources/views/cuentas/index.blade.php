@@ -15,11 +15,12 @@
         </thead>
         <tbody>
             @for($i = 1; $i <= 5; $i++)
+            <?php $numero_cuenta = "00000{$i}" ?>
             <tr>
-                <td>00000{{ $i }}</td>
-                <td>Nombre de la cuenta #{{ $i }}</td>
+                <td>{{ $numero_cuenta }}</td>
+                <td>Nombre de la cuenta #{{ $numero_cuenta }}</td>
                 <td>
-                    <a href="#!">Eliminar</a>
+                    <a href="{{ route('cuentas.delete', $numero_cuenta) }}">Eliminar</a>
                 </td>
             </tr>
             @endfor

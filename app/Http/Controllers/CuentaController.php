@@ -21,7 +21,14 @@ class CuentaController extends Controller
         return 'Agregando cuenta a ...';
     }
 
-    public function destroy()
+    public function delete($cuenta)
+    {
+        return view('cuentas.delete', [
+            'cuenta' => $cuenta,
+        ]);
+    }
+
+    public function destroy($id)
     {
         return 'Eliminando cuenta de ...';
     }
