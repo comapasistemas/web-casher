@@ -7,6 +7,7 @@ use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EscritorioController;
+use App\Http\Controllers\TarjetaController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +44,9 @@ Route::middleware(['web','auth'])->group(function () {
     Route::get('escritorio', [EscritorioController::class, 'index'])->name('escritorio.index');
     Route::get('consultas', [ConsultaController::class, 'index'])->name('consultas.index');
     Route::resource('cuentas', CuentaController::class)->except(['show','edit','update']);
+
+    Route::get('tarjetas/{id}/delete', [TarjetaController::class, 'delete'])->name('tarjetas.delete');
+    Route::resource('tarjetas', TarjetaController::class)->except(['show']);
 
     Route::delete('/', [SesionController::class, 'logout'])->name('logout');
 });
