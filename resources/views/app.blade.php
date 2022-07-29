@@ -15,5 +15,6 @@
         </div>
         @includeWhen(auth()->check(), 'aplicacion.topbar')
 		@yield('content')
+        @include('aplicacion.footer')
 	</body>
 </html>
