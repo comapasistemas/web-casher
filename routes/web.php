@@ -3,6 +3,7 @@
 use App\Http\Controllers\Autenticacion\RegistrarController;
 use App\Http\Controllers\Autenticacion\SesionController;
 use App\Http\Controllers\AutenticacionController;
+use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EscritorioController;
 use App\Http\Controllers\UsuarioController;
@@ -38,9 +39,8 @@ Route::middleware(['web','guest'])->group(function () {
 });
 
 Route::middleware(['web','auth'])->group(function () {
-    Route::get('/escritorio', [EscritorioController::class, 'index'])->name('escritorio.index');
+    Route::get('escritorio', [EscritorioController::class, 'index'])->name('escritorio.index');
     Route::delete('/', [SesionController::class, 'logout'])->name('logout');
     
-    Route::resource('usuarios', UsuarioController::class);
 });
 
