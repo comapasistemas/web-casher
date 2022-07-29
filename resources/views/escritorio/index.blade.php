@@ -15,7 +15,7 @@
         </table>
     </div>
     <div>
-        <p>Promedio de gasto</p>
+        <p>Promedio de saldos al momento</p>
         @for($i = 1; $i <= 5; $i++)
         <div>
             <p>
@@ -36,7 +36,7 @@
         <li>
             Si requieres los archivos XML, envíanos un correo electrónico a <a href="mailto:contacto@comapanuevolaredo.gob.mx">contacto@comapanuevolaredo.gob.mx</a> con la siguiente información:
             <ul>
-                <li>Nombre completo, numero de cuenta y meses que solicita</li>
+                <li>Nombre completo</li>
                 <li>Correo electrónico</li>
                 <li>Número de cuenta</li>
                 <li>Meses específicos que solicita</li>
