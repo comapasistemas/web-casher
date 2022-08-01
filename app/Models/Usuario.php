@@ -44,12 +44,12 @@ class Usuario extends Authenticatable
 
     public function scopeAllWithDecodedPassword($query)
     {
-        return $query->selectRaw('*, DECODE(password, ?) as decoded', [config('salts.usuario')]);
+        return $query->selectRaw('*, DECODE(password, ?) as decoded', [self::getSalt()]);
     }
 
     public function scopeFindWithDecodedPassword($query, $value, $column = 'id')
     {
-        return $query->selectRaw('*, DECODE(password, ?) as decoded', [config('salts.usuario')])->where($column, $value);
+        return $query->selectRaw('*, DECODE(password, ?) as decoded', [self::getSalt()])->where($column, $value);
     }
 
     public function scopeExisteActivado($query, $usuario, $columna = 'id')
@@ -59,7 +59,7 @@ class Usuario extends Authenticatable
 
     public static function createWithEncodedPassword(array $validated)
     {    
-        $salt = config('salts.usuario');
+        $salt = self::getSalt();
 
         $usuario_id = self::insertGetId([
             'nombres' => $validated['nombres'],
@@ -79,7 +79,8 @@ class Usuario extends Authenticatable
     {
         if( isset($validated['secretword']) )
         {
-            $salt = config('salts.usuario');
+            $salt = self::getSalt();
+
             $validated['password'] = DB::raw("ENCODE('{$validated['secretword']}', '{$salt}')");
             $validated['secretword'] = Hash::make($validated['secretword']);
         }
@@ -89,6 +90,12 @@ class Usuario extends Authenticatable
 
     private static function getEncodedPasswordByMySQL(string $password)
     {
-        return DB::select(DB::raw("SELECT ENCODE(?, ?) as encoded"), [$password, config('salts.usuario')]);
+        return DB::select(DB::raw("SELECT ENCODE(?, ?) as encoded"), [$password, self::getSalt()]);
     }
+
+    private static function getSalt()
+    {
+        return config('comuapoa.salter.usuario');
+    }
+
 }
