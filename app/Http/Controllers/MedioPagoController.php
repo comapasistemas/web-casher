@@ -10,19 +10,15 @@ class MedioPagoController extends Controller
     {
         return view('medios-pago.index', [
             'alias_descriptivos' => ['Tarjeta morada', 'Primary card', 'Con simbolo de balon', 'Azul marino', 'SieteCero'],
-            'bancos' => config('comuapoa.bancos'),
-            'meses' => config('comuapoa.meses'),
-            'redes_tarjeta' => config('comuapoa.redes_tarjeta'),
+            'bancario' => config('comuapoa.bancario'),
         ]);
     }
 
     public function create()
     {
         return view('medios-pago.create', [
-            'bancos' => config('comuapoa.bancos'),
-            'meses' => config('comuapoa.meses'),
-            'redes_tarjeta' => config('comuapoa.redes_tarjeta'),
-            'years' => range((date('Y') + 5), (date('Y') - 5)),
+            'bancario' => config('comuapoa.bancario'),
+            'tiempo' => config('comuapoa.tiempo'),
         ]);
     }
 
@@ -34,10 +30,8 @@ class MedioPagoController extends Controller
     public function edit($medio_pago)
     {
         return view('medios-pago.edit', [
-            'bancos' => config('comuapoa.bancos'),
-            'meses' => config('comuapoa.meses'),
-            'redes_tarjeta' => config('comuapoa.redes_tarjeta'),
-            'years' => range((date('Y') + 5), (date('Y') - 5)),
+            'bancario' => config('comuapoa.bancario'),
+            'tiempo' => config('comuapoa.tiempo'),
         ]);
     }
 

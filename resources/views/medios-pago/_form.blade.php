@@ -5,7 +5,7 @@
 <div>
     <label for="selectBanco">Banco</label>
     <select name="banco" id="selectBanco">
-        @foreach($bancos as $banco)
+        @foreach($bancario['nombres_bancos'] as $banco)
         <option value="{{ $banco }}">{{ $banco }}</option>
         @endforeach
     </select>
@@ -17,7 +17,7 @@
 <div>
     <label for="selectRedTarjeta">Red de tarjeta</label>
     <select name="red_tarjeta" id="selectRedTarjeta">
-        @foreach($redes_tarjeta as $red)
+        @foreach($bancario['redes_tarjeta'] as $red)
         <option value="{{ $red }}">{{ $red }}</option>
         @endforeach
     </select>
@@ -26,7 +26,7 @@
 <div>
     <label for="selectMesVencimiento">Mes</label>
     <select name="mes_vencimiento" id="selectMesVencimiento">
-        @foreach($meses as $numero_mes => $nombre_mes)
+        @foreach($tiempo['meses'] as $numero_mes => $nombre_mes)
         <option value="{{ $numero_mes }}">{{ $numero_mes < 10 ? "0{$numero_mes}" : $numero_mes }} ({{ ucfirst($nombre_mes) }})</option>
         @endforeach
     </select>
@@ -34,7 +34,7 @@
 <div>
     <label for="selectYearVencimiento">Año</label>
     <select name="year_vencimiento" id="selectYearVencimiento">
-        @foreach($years as $year)
+        @foreach($bancario['vigencias_tarjeta'] as $year)
         <option value="{{ $year }}">{{ $year }}</option>
         @endforeach
     </select>
