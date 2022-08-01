@@ -19,6 +19,12 @@ class RegistrarController extends Controller
         if(! $usuario = Usuario::createWithEncodedPassword($request->validated()) )
             return back()->with('message', 'Intenta registrarte nuevamente');
 
+        $usuario->cuentas()->create([
+            'cuenta' => $usuario->cuenta,
+        ]);
+
+        // Enviar correo electronico con las credenciales y url de acceso
+
         return redirect()->route('login', ['usuario' => $usuario->usuario])->with('message', 'Registro con éxito');
     }
 }
