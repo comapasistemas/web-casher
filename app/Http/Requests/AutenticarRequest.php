@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class AutenticarRequest extends FormRequest
 {
-    private $message_try_again = 'Usuario ó contrseña incorrectos';
+    private $message_try_again = 'Usuario ó contraseña incorrectos';
 
     public function authorize()
     {

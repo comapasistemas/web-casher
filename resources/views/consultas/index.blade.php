@@ -65,7 +65,7 @@ $icons_count = count($icons);
     <h4>IMPORTANTE</h4>
     <ul>
         <li>Te recomendados instalar el software <a href="https://get.adobe.com/es/reader/" target="_blank">Acrobat Reader</a> para visualizar tus recibos en formato <a href="https://www.adobe.com/mx/acrobat/about-adobe-pdf.html" target="_blank">PDF</a>.</li>
-        <li>Imprime tus recibos solamente en <a href="https://www.webcartucho.mx/blog/impresora-de-tinta-o-impresora-laser" target="_blank">impresoras láser ó tinta</a> para la lectura correcta del código en sucursales como <a href="https://www.oxxo.com/" target="_blank">OXXO</a>.</li>
+        <li>Imprime tus recibos solamente en <a href="https://www.webcartucho.mx/blog/impresora-de-tinta-o-impresora-laser" target="_blank">impresoras láser ó tinta</a> para la lectura correcta en sucursales como <a href="https://www.oxxo.com/" target="_blank">OXXO</a>.</li>
     </ul>
 </div>
 @endsection
