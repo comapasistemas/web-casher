@@ -14,14 +14,21 @@ return new class extends Migration
     public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->id();
-            $table->string('password', 48);
-            $table->string('secretword', 64);
-            $table->boolean('acepto_terminos_condiciones')->default(1);
-            $table->boolean('actualizado')->default(1);
+            // $table->id();
+            // $table->string('nombres', 80);
+            // $table->string('apellido_paterno', 80);
+            // $table->string('apellido_materno', 80);
+            // $table->string('correo_electronico', 88);
+            // $table->char('cuenta', 6); // Requiere normalizacion con tabla de cuentas
+            // $table->string('usuario', 16);
+            // $table->string('password', 48);
+            $table->string('secretword', 64)->default('..?'); // (..?|NULL): Para actualizar desde password encoded
             $table->boolean('activado')->default(1);
             $table->string('remember_token', 100)->nullable();
+            $table->dateTime('acepto_contrato')->default(now());
+            $table->dateTime('actualizo_perfil')->default(now());
             $table->timestamps(); // DATETIME = CURRENT_TIMESTAMP
+            // $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP(0)'));
         });
 		
 		/**
