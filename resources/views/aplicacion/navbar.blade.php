@@ -14,6 +14,6 @@
     <a href="{{ route('escritorio.index') }}">Escritorio</a>
     <a href="{{ route('consultas.index') }}">Consultas</a>
     <a href="{{ route('cuentas.index') }}">Cuentas asociadas</a>
-    <a href="{{ route('tarjetas.index') }}">Tarjetas</a>
+    <a href="{{ route('medios-pago.index') }}">Medios de pago</a>
 </div>
 <br>

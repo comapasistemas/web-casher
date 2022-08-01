@@ -2,7 +2,7 @@
 @section('content')
 <div>
     <p>
-        <a href="{{ route('tarjetas.create') }}">Agregar tarjeta</a>
+        <a href="{{ route('medios-pago.create') }}">Agregar medio de pago</a>
     </p>
     <table>
         <thead>
@@ -30,8 +30,8 @@
                 </td>
                 <td>{{ mt_rand(01,12) }}/{{ mt_rand((date('Y') - 5), (date('Y') + 5)) }}</td>
                 <td>
-                    <a href="{{ route('tarjetas.edit', $i) }}">Editar</a>
-                    <a href="{{ route('tarjetas.delete', $i) }}">Eliminar</a>
+                    <a href="{{ route('medios-pago.edit', $i) }}">Editar</a>
+                    <a href="{{ route('medios-pago.delete', $i) }}">Eliminar</a>
                 </td>
             </tr>
             @endfor
