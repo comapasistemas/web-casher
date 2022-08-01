@@ -12,7 +12,7 @@ class MedioPagoController extends Controller
             'alias_descriptivos' => ['Tarjeta morada', 'Primary card', 'Con simbolo de balon', 'Azul marino', 'SieteCero'],
             'bancos' => config('comuapoa.bancos'),
             'meses' => config('comuapoa.meses'),
-            'tipos_tarjeta' => config('comuapoa.tipos_tarjeta'),
+            'redes_tarjeta' => config('comuapoa.redes_tarjeta'),
         ]);
     }
 
@@ -21,7 +21,7 @@ class MedioPagoController extends Controller
         return view('medios-pago.create', [
             'bancos' => config('comuapoa.bancos'),
             'meses' => config('comuapoa.meses'),
-            'tipos_tarjeta' => config('comuapoa.tipos_tarjeta'),
+            'redes_tarjeta' => config('comuapoa.redes_tarjeta'),
             'years' => range((date('Y') + 5), (date('Y') - 5)),
         ]);
     }
@@ -36,7 +36,7 @@ class MedioPagoController extends Controller
         return view('medios-pago.edit', [
             'bancos' => config('comuapoa.bancos'),
             'meses' => config('comuapoa.meses'),
-            'tipos_tarjeta' => config('comuapoa.tipos_tarjeta'),
+            'redes_tarjeta' => config('comuapoa.redes_tarjeta'),
             'years' => range((date('Y') + 5), (date('Y') - 5)),
         ]);
     }

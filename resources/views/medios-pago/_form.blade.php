@@ -15,10 +15,10 @@
     <input type="text" name="numero" id="inputTarjeta" placeholder="XXXX XXXX XXXX XXXX">
 </div>
 <div>
-    <label for="selectTipo">Tipo de tarjeta</label>
-    <select name="tipo" id="selectTipo">
-        @foreach($tipos_tarjeta as $tipo)
-        <option value="{{ $tipo }}">{{ $tipo }}</option>
+    <label for="selectRedTarjeta">Red de tarjeta</label>
+    <select name="red_tarjeta" id="selectRedTarjeta">
+        @foreach($redes_tarjeta as $red)
+        <option value="{{ $red }}">{{ $red }}</option>
         @endforeach
     </select>
 </div>

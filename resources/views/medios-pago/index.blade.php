@@ -26,7 +26,7 @@
                     <span>{{ mt_rand(1000, 9999) }}</span>
                 </td>
                 <td>
-                    <small>{{ $tipos_tarjeta[ mt_rand(0,1) ] }}</small>
+                    <small>{{ $redes_tarjeta[ mt_rand(0,1) ] }}</small>
                 </td>
                 <td>{{ mt_rand(01,12) }}/{{ mt_rand((date('Y') - 5), (date('Y') + 5)) }}</td>
                 <td>
