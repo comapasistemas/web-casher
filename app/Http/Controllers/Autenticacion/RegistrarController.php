@@ -16,9 +16,9 @@ class RegistrarController extends Controller
 
     public function store(RegistrarRequest $request)
     {
-		if(! $usuario = Usuario::createWithEncodedPassword($request->validated()) )
-			return back()->with('message', 'Intenta registrarte nuevamente');
+        if(! $usuario = Usuario::createWithEncodedPassword($request->validated()) )
+            return back()->with('message', 'Intenta registrarte nuevamente');
 
-		return redirect()->route('login', ['usuario' => $usuario->usuario])->with('message', 'Registro con éxito');
+        return redirect()->route('login', ['usuario' => $usuario->usuario])->with('message', 'Registro con éxito');
     }
 }
