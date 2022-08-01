@@ -1,7 +1,8 @@
 @extends('app')
 @section('content')
 <?php 
-$limit = 5;
+$cuentas = range(1,10);
+$cuentas_count = count($cuentas);
 $icons = ['Vigente', 'En proceso', 'Pagado', 'Vencido'];
 $icons_count = count($icons);
 ?>
@@ -11,9 +12,9 @@ $icons_count = count($icons);
             <label for="selectCuenta">Cuenta</label>
             <select name="cuenta" id="selectCuenta">
                 <option value="todas">Todas las cuentas</option>
-                @for($i = 1; $i <= 5; $i++)
-                <option value='00000{{ $i }}'>00000{{ $i }}</option>
-                @endfor
+                @foreach($cuentas as $cuenta)
+                <option value='{{ $cuenta }}'>{{ $cuenta }}</option>
+                @endforeach
             </select>
         </div>
         <div>
@@ -27,7 +28,41 @@ $icons_count = count($icons);
         <button type="submit">Filtrar saldos</button>
     </form>
 </div>
-<p>Saldos encontrados: {{ $limit }}</p>
+
+<p>Saldos encontrados: {{ $cuentas_count }}</p>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Cuenta</th>
+                <th>Nombre</th>
+                <th>Vencimiento</th>
+                <th>Estado</th>
+                <th>Importe</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($cuentas as $cuenta)         
+            <tr>
+                <td>{{ $cuenta }}</td>
+                <td>NOMBRE COMPLETO #{{ $cuenta }}</td>
+                <td>0{{ mt_rand(1,31) }}/MES/2030</td>
+                <td>{{ $icons[mt_rand(0, ($icons_count-1))] }}</td>
+                <td>${{ mt_rand(10, 1000) * 1.99 }}</td>
+                <td>
+                    <a href="#modal">Descargar</a>
+                    <a href="{{ route('pagos.create', $cuenta) }}">Pagar</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<hr>
+<p><em>OLDER</em></p>
 <div>
     <table>
         <thead>
@@ -44,11 +79,10 @@ $icons_count = count($icons);
             </tr>
         </thead>
         <tbody>
-            @for($i = 1; $i <= $limit; $i++)         
             <tr>
-                <td>00000{{ $i }}</td>
-                <td>NOMBRE COMPLETO DEL CUENTA {{ $i }}</td>
-                <td>0{{ $i }}/MES/2030</td>
+                <td>000001</td>
+                <td>NOMBRE COMPLETO DEL CUENTA 1</td>
+                <td>01/MES/2030</td>
                 <td>${{ mt_rand(10, 1000) * 1.99 }}</td>
                 <td>Recibo domiciliario / No disponible</td>
                 <td>Recibo domiciliario / <a href="#!">Complemento de pago</a></td>
@@ -56,11 +90,14 @@ $icons_count = count($icons);
                 <td><a href="#!">Pagar</a></td>
                 <td><a href="#!">Pagar</a></td>
             </tr>
-            @endfor
         </tbody>
     </table>
-    <p>Paginacion: 1 de #</p>
 </div>
+<hr>
+<p><em>OLDER</em></p>
+
+<p>Paginacion: 1 de #</p>
+
 <div>
     <h4>IMPORTANTE</h4>
     <ul>

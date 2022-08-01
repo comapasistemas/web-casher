@@ -8,6 +8,7 @@ use App\Http\Controllers\CuentaController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\EscritorioController;
 use App\Http\Controllers\MedioPagoController;
+use App\Http\Controllers\PagoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,11 @@ Route::middleware(['web','auth'])->group(function () {
 
     Route::get('medios-pago/{medio_pago}/delete', [MedioPagoController::class, 'delete'])->name('medios-pago.delete');
     Route::resource('medios-pago', MedioPagoController::class)->except(['show']);
+
+    Route::controller(PagoController::class)->group(function () {
+        Route::get('pagar/{recibo}', 'create')->name('pagos.create');
+        Route::post('pagar/{recibo}', 'store')->name('pagos.store');
+    });
 
     Route::delete('/', [SesionController::class, 'logout'])->name('logout');
 });
