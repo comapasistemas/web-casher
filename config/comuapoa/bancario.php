@@ -5,7 +5,7 @@ return [
      * Nombres de bancos activos en la actualidad de México
      * 
      */
-    'bancos' => [
+    'nombres_bancos' => [
         'Banamex',
         'Banjercito',
         'Banorte', 
@@ -26,7 +26,7 @@ return [
     ],
 
     /**
-     * Período de vigencia en tarjetas bancarias se estima de 3 a 5 años, por lo que se realiza 
+     * Períodos de vigencia en tarjetas bancarias se estima de 3 a 5 años, por lo que se realiza 
      * el calculo del tiempo de 5 años antes y después del año actual.
      * 
      * Generando el arreglo con la función: range()
@@ -40,7 +40,7 @@ return [
      * https://www.php.net/manual/es/function.date.php
      * 
      */
-    'periodos_vigencia_tarjeta' => range( (date('Y') + 5), (date('Y') - 5) ),
-    'periodo_maximo_vigencia_tarjeta' => (date('Y') - 5),
-    'periodo_minimo_vigencia_tarjeta' => (date('Y') + 5),
+    'vigencias_tarjeta' => range( (date('Y') + 5), (date('Y') - 5) ),
+    'vigencia_maxima_tarjeta' => (date('Y') - 5),
+    'vigencia_minima_tarjeta' => (date('Y') + 5),
 ];
