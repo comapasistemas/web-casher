@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('cuentas', function (Blueprint $table) {
-
+            $table->timestamps(); // DATETIME = CURRENT_TIMESTAMP / updated_at, created_at
         });
 
         /**
