@@ -57,6 +57,11 @@ class Usuario extends Authenticatable
         return $query->where($columna, $usuario)->where('activado', 1)->exists();
     }
 
+    public function cuentas()
+    {
+        return $this->hasMany(Cuenta::class, 'id_usuario');
+    }
+
     public static function createWithEncodedPassword(array $validated)
     {    
         $salt = self::getSalt();

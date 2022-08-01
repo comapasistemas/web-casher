@@ -13,4 +13,9 @@ class Cuenta extends Model
         'id_usuario',
         'cuenta',
     ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
 }
