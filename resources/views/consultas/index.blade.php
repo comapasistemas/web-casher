@@ -1,7 +1,7 @@
 @extends('app')
 @section('content')
 <?php 
-$cuentas = range(1,10);
+$cuentas = range(1,5);
 $cuentas_count = count($cuentas);
 $icons = ['Vigente', 'En proceso', 'Pagado', 'Vencido'];
 $icons_count = count($icons);
@@ -61,6 +61,8 @@ $icons_count = count($icons);
     </table>
 </div>
 
+<p>Paginacion: 1 de #{{ $cuentas_count }}</p>
+
 <hr>
 <p><em>OLDER</em></p>
 <div>
@@ -93,10 +95,8 @@ $icons_count = count($icons);
         </tbody>
     </table>
 </div>
-<hr>
 <p><em>OLDER</em></p>
-
-<p>Paginacion: 1 de #</p>
+<hr>
 
 <div>
     <h4>IMPORTANTE</h4>
