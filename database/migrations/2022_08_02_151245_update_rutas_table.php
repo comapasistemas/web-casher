@@ -14,14 +14,24 @@ return new class extends Migration
     public function up()
     {
         Schema::table('rutas', function (Blueprint $table) {
-            $table->smallInteger('CVE_RUTA'); // Clave ruta
-            $table->tinyInteger('CVE_VENC'); // Clave vencimiento
+            // $table->id();
+            $table->smallInteger('clave_ruta'); // Requiere una tabla de rutas para relacionar en otra tabla con claves_vencimiento? ruta_id primaria o unica?
+            $table->tinyInteger('clave_vencimiento');
             // $table->timestamps();
         });
 
         /**
-         * CVE_VENC = Dia de vencimiento para su facturación
+         * TABLE: rutas
+         * Asigna clave de vencimiento para cada clave de ruta y llevar un orden ruta y dia 
          * 
+         * CVE_RUTA: varchar(3)
+         * CVE_VENC: varchar(1) null "Clave del dia de vencimiento para su facturación"
+         * 
+         * INDEXES: CVE_RUTA(primary, unique), CVE_VENC
+         */
+
+
+        /**
          * Clave = Dia del mes
          * 1 = 5
          * 2 = 10

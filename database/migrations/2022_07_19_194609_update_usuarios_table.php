@@ -19,29 +19,33 @@ return new class extends Migration
             // $table->string('apellido_paterno', 80);
             // $table->string('apellido_materno', 80);
             // $table->string('correo_electronico', 88);
-            // $table->char('cuenta', 6); // Requiere normalizacion con tabla de cuentas
+            // $table->char('cuenta', 6);
             // $table->string('usuario', 16);
-            // $table->string('password', 48);
-            $table->string('secretword', 64)->default('..?'); // (..?|NULL): Para actualizar desde password encoded
-            $table->boolean('activado')->default(1);
-            $table->string('remember_token', 100)->nullable();
-            $table->dateTime('acepto_contrato')->default(now());
-            $table->dateTime('actualizo_perfil')->default(now());
+            // $table->string('password', 48); // Utiliza encode('text', 'hackcomapa') y decode de MySQL
+            $table->string('secretword', 64)->default('..?'); // default(..?|NULL): Para actualizar con password decode y encriptarlo con Hash
+            $table->boolean('activado')->default(1)->comment('Usuario esta autorizado o no para acceder a la aplicación');
+            $table->string('remember_token', 100)->nullable()->comment('Para confirmacion de alguna petición por la aplicación');
+            $table->dateTime('acepto_contrato')->default(now())->comment('Usuario acepto la última actualización del contrato');
+            $table->dateTime('actualizo_perfil')->default(now())->comment('Usuario actualizo su información requeridos por la aplicación');
             $table->timestamps(); // DATETIME = CURRENT_TIMESTAMP
-            // $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP(0)'));
+            // $table->timestamp('created_at')->default( DB::raw('CURRENT_TIMESTAMP(0)') );
         });
 		
 		/**
-         * OLD TABLE
+         * TABLE: usuarios
          * 
-         * id - bigint(7)
-         * usuario - char(12)
-         * password - char(12)
-         * nombres - varchar(80)
-         * apellidopaterno - varchar(80)
-         * apellidomaterno - varchar(80)
-         * cuenta - varchar(6)
-         * email - char(100)
+         * Usuarios para la autenticacion de la aplicacion
+         * 
+         * id: bigint(7)
+         * usuario: char(12)
+         * password: char(12)
+         * nombres: varchar(80)
+         * apellidopaterno: varchar(80)
+         * apellidomaterno: varchar(80)
+         * cuenta: varchar(6)
+         * email: char(100)
+         * 
+         * INDEXES: id, usuario(primary)
          */
     }
 
