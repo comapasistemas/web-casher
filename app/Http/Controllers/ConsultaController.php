@@ -8,6 +8,8 @@ class ConsultaController extends Controller
 {
     public function index()
     {
-        return view('consultas.index');
+        return view('consultas.index', [
+            'cuentas' => auth()->user()->cuentas,
+        ]);
     }
 }
