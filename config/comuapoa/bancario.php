@@ -13,6 +13,7 @@ return [
         'BBVA', 
         'HSBC',
         'Santander',
+        'Scotiabank',
     ],
 
     /**
