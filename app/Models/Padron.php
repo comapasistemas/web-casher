@@ -12,4 +12,9 @@ class Padron extends Model
     protected $table = 'padron';
 
     protected $guarded = [];
+
+    public function cuenta()
+    {
+        return $this->belongsTo(Cuenta::class, 'CUENTA', 'cuenta');
+    }
 }

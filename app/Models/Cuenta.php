@@ -18,4 +18,9 @@ class Cuenta extends Model
     {
         return $this->belongsTo(Usuario::class, 'id_usuario');
     }
+
+    public function residente()
+    {
+        return $this->hasOne(Padron::class, 'CUENTA', 'cuenta');
+    }
 }
