@@ -9,10 +9,14 @@ class Cuenta extends Model
 {
     use HasFactory;
 
+    protected $table = 'cuentas';
+
     protected $fillable = [
         'id_usuario',
         'cuenta',
     ];
+
+    public $timestamps = false;
 
     public function usuario()
     {

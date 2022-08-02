@@ -13,6 +13,8 @@ class Padron extends Model
 
     protected $guarded = [];
 
+    public $timestamps = false;
+    
     public function cuenta()
     {
         return $this->belongsTo(Cuenta::class, 'CUENTA', 'cuenta');

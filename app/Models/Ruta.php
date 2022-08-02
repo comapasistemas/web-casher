@@ -9,6 +9,10 @@ class Ruta extends Model
 {
     use HasFactory;
 
+    protected $table = 'rutas';
+
+    protected $guarded = [];
+
     protected static $claves_vencimiento = [
         1 => '05',
         2 => '10',
@@ -17,8 +21,6 @@ class Ruta extends Model
         5 => '25',
         6 => '30',
     ];
-
-    protected $guarded = [];
 
     public $timestamps = false;
 
