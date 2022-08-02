@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('rutas', function (Blueprint $table) {
             $table->smallInteger('CVE_RUTA'); // Clave ruta
-            $table->smallInteger('CVE_VENC'); // Clave vencimiento
+            $table->tinyInteger('CVE_VENC'); // Clave vencimiento
             // $table->timestamps();
         });
 
