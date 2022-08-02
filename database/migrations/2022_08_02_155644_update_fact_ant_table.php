@@ -21,7 +21,7 @@ return new class extends Migration
             $table->decimal('ad_total', 14, 2); // porque decimal y no double?, que es ad? Maneja numeros negativos?
             $table->date('periodo_at'); // Es una fecha? es una clave de fecha?
             $table->foreignId('pagare_id', 7); // Es una llave foranea? Tabla de pagares? como se genera?
-            $table->integer('rezago_manual'); // porque double y no integer(small, int) o char(5)?
+            $table->integer('rezago_manual'); // Rezago manual o numero de convenio? Tabla de convenios? convenio_id? porque double y no integer(small, int) o char(5)?
             $table->foreignId('cuenta_id'); // Llave foranea? tabla de cuentas?
             $table->timestamps();
         });
