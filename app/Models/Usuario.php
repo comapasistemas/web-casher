@@ -62,6 +62,11 @@ class Usuario extends Authenticatable
         return $this->hasMany(Cuenta::class, 'id_usuario');
     }
 
+    public function facturasPagar()
+    {
+        return $this->hasMany(FacturaPagar::class, 'CUENTA', 'cuenta');
+    }
+
     public static function createWithEncodedPassword(array $validated)
     {    
         $salt = self::getSalt();
