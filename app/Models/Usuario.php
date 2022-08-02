@@ -23,9 +23,9 @@ class Usuario extends Authenticatable
         'usuario',
         'password',
         'secretword',
-        'acepto_terminos_condiciones',
-        'actualizado',
-        'aprobado',
+        'acepto_contrato',
+        'actualizo_perfil',
+        'activado',
     ];
 
     public function setSecretwordAttribute($value)

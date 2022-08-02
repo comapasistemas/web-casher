@@ -28,7 +28,7 @@ class UsuarioRequest extends FormRequest
             'usuario' => ['bail','required','alpha_num','between:6,12','unique:usuarios,usuario'],
             'password' => ['string'],
             'secretword' => ['required','min:6','confirmed'],
-            'acepto_terminos_condiciones' => ['required','accepted'],
+            'acepto_contrato' => ['required','accepted'],
         ];
     }
 
@@ -66,8 +66,8 @@ class UsuarioRequest extends FormRequest
             'secretword.min' => __('La contraseña debe tener mínimo de 6 caractéres'),
             'secretword.confirmed' => __('Verifica la confirmación de la contraseña'),
 
-            'acepto_terminos_condiciones.required' => __('Aceptar los términos y condiciones de la aplicación'),
-            'acepto_terminos_condiciones.accepted' => __('Aceptar los términos y condiciones de la aplicación'),
+            'acepto_contrato.required' => __('Aceptar los términos y condiciones de la aplicación'),
+            'acepto_contrato.accepted' => __('Aceptar los términos y condiciones de la aplicación'),
         ];
     }
 
@@ -85,6 +85,8 @@ class UsuarioRequest extends FormRequest
             'password' => $this->contrasena,
             'secretword' => $this->contrasena,
             'secretword_confirmation' => $this->confirmar_contrasena,
+
+            'acepto_contrato' => $this->acepto_terminos_condiciones
         ]);
     }
 }
