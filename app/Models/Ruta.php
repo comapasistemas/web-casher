@@ -19,12 +19,12 @@ class Ruta extends Model
 
     public function getClaveRutaAttribute()
     {
-        return $this->CVE_RUTA;
+        return (int) $this->CVE_RUTA;
     }
 
     public function getClaveVencimientoAttribute()
     {
-        return $this->CVE_VENC;
+        return (int) $this->CVE_VENC;
     }
 
     public function getDiaVencimientoAttribute()
