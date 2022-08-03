@@ -15,8 +15,8 @@ class PagoConvenio extends Model
 
     public $timestamps = false;
 
-    public function facturaActual()
+    public function facturaPagar()
     {
-        return;
+        return $this->belongsTo(FacturaPagar::class, 'REZAGO_MAN', 'convenio');
     }
 }
