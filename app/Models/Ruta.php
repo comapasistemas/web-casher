@@ -13,14 +13,7 @@ class Ruta extends Model
 
     protected $guarded = [];
 
-    protected static $claves_vencimiento = [
-        1 => '05',
-        2 => '10',
-        3 => '15',
-        4 => '20',
-        5 => '25',
-        6 => '30',
-    ];
+    protected static $claves_vencimiento_cache = null;
 
     public $timestamps = false;
 
@@ -34,13 +27,26 @@ class Ruta extends Model
         return $this->CVE_VENC;
     }
 
+    public function getDiaVencimientoAttribute()
+    {
+        return self::getDiaVencimientoPorClave($this->clave_vencimiento);
+    }
+
     public static function getDiaVencimientoPorClave(int $clave)
     {
-        return array_key_exists($clave, self::$claves_vencimiento) ? self::$claves_vencimiento[$clave] : null;
+        return array_key_exists($clave, self::clavesVencimiento()) ? self::clavesVencimiento()[$clave] : null;
     }
 
     public static function getClaveVencimientoPorDia(string $dia)
     {
-        return in_array($dia, self::$claves_vencimiento) ? array_search($dia, self::$claves_vencimiento) : null;
+        return in_array($dia, self::clavesVencimiento()) ? array_search($dia, self::clavesVencimiento()) : null;
+    }
+
+    private static function clavesVencimiento()
+    {
+        if( is_null(self::$claves_vencimiento_cache) )
+            self::$claves_vencimiento_cache = config('comuapoa.claves_vencimiento');
+
+        return self::$claves_vencimiento_cache;
     }
 }
