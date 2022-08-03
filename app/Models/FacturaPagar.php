@@ -24,4 +24,9 @@ class FacturaPagar extends Model
     {
         return $this->belongsTo(Cuenta::class, 'cuenta', 'CUENTA');
     }
+
+    public function pagoConvenios()
+    {
+        return $this->hasMany(PagoConvenio::class, 'convenio', 'REZAGO_MAN');
+    }
 }
