@@ -5,11 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-/**
-* Periodo se conforma de 6 digitos, los primeros 4(*) son el año y los ultimos 2(#) son el numero de mes
-* 
-Ejemplo: ****##
-*/
 class FacturaPagar extends Model
 {
     use HasFactory;
