@@ -11,9 +11,9 @@ class PagoConvenio extends Model
 
     protected $table = 'pag_con';
 
-    protected $timestamps = false;
-
     protected $guarded = [];
+
+    public $timestamps = false;
 
     public function facturaActual()
     {
