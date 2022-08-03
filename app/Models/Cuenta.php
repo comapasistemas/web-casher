@@ -32,4 +32,9 @@ class Cuenta extends Model
     {
         return $this->hasOne(Padron::class, 'CUENTA', 'cuenta');
     }
+
+    public function facturaPagar()
+    {
+        return $this->belongsTo(FacturaPagar::class, 'cuenta', 'CUENTA');
+    }
 }
