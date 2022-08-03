@@ -1,19 +1,19 @@
 @extends('app')
 @section('content')
 <?php 
-$cuentas = range(1,5);
-$cuentas_count = count($cuentas);
 $icons = ['Vigente', 'En proceso', 'Pagado', 'Vencido'];
 $icons_count = count($icons);
 ?>
+<p>Cuentas asociadas: {{ $cuentas_asociadas->count() }}</p>
+
 <div>
     <form action="{{ route('consultas.index') }}" method="get">
         <div>
             <label for="selectCuenta">Cuenta</label>
             <select name="cuenta" id="selectCuenta">
-                <option value="todas">Todas las cuentas</option>
-                @foreach($cuentas as $cuenta)
-                <option value='{{ $cuenta }}'>{{ $cuenta }}</option>
+                <option value="todas">Todas las cuentas asociadas</option>
+                @foreach($cuentas_asociadas as $cuenta)
+                <option value='{{ $cuenta->numero }}'>{{ $cuenta->numero }}</option>
                 @endforeach
             </select>
         </div>
@@ -28,8 +28,7 @@ $icons_count = count($icons);
         <button type="submit">Filtrar saldos</button>
     </form>
 </div>
-
-<p>Saldos encontrados: {{ $cuentas_count }}</p>
+<br>
 
 <div>
     <table>
@@ -44,16 +43,16 @@ $icons_count = count($icons);
             </tr>
         </thead>
         <tbody>
-            @foreach($cuentas as $cuenta)         
+            @foreach($cuentas_asociadas as $cuenta)
             <tr>
-                <td>{{ $cuenta }}</td>
-                <td>NOMBRE COMPLETO #{{ $cuenta }}</td>
-                <td>0{{ mt_rand(1,31) }}/MES/2030</td>
+                <td>{{ $cuenta->numero }}</td>
+                <td>{{ $cuenta->residente->nombre_completo }}</td>
+                <td>{{ $cuenta->facturaPagar->fechaVencimiento($cuenta->residente->ruta->clave_vencimiento) }}</td>
                 <td>{{ $icons[mt_rand(0, ($icons_count-1))] }}</td>
                 <td>${{ mt_rand(10, 1000) * 1.99 }}</td>
                 <td>
+                    <a href="{{ route('pagos.create', 1) }}">Pagar</a>
                     <a href="#modal">Descargar</a>
-                    <a href="{{ route('pagos.create', $cuenta) }}">Pagar</a>
                 </td>
             </tr>
             @endforeach
@@ -61,7 +60,7 @@ $icons_count = count($icons);
     </table>
 </div>
 
-<p>Paginacion: 1 de #{{ $cuentas_count }}</p>
+<p>Paginacion: 1 de #{{ $cuentas_asociadas->count() }}</p>
 
 <hr>
 <p><em>OLDER</em></p>
