@@ -18,6 +18,11 @@ class Cuenta extends Model
 
     public $timestamps = false;
 
+    public function getNumeroAttribute()
+    {
+        return $this->cuenta;
+    }
+
     public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'id_usuario');
