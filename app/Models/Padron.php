@@ -15,8 +15,23 @@ class Padron extends Model
 
     public $timestamps = false;
     
+    public function getNombreCompletoAttribute()
+    {
+        return $this->NOMBRE;
+    }
+
     public function cuenta()
     {
         return $this->belongsTo(Cuenta::class, 'CUENTA', 'cuenta');
+    }
+
+    public function ruta()
+    {
+        return $this->belongsTo(Ruta::class, 'RUTA', 'CVE_RUTA');
+    }
+
+    public function facturaPagar()
+    {
+        return $this->belongsTo(FacturaPagar::class, 'CUENTA', 'CUENTA');
     }
 }
